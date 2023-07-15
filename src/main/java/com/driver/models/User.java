@@ -1,33 +1,24 @@
 package com.driver.models;
 
+
 import javax.persistence.*;
-import java.util.ArrayList;
 import java.util.List;
 
-@Table(name = "User")
 @Entity
+@Table(name="user")
 public class User{
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-
     private String username;
-
     private String password;
-
     private String firstName;
+    private String lastName;
 
-    private  String lastName;
-
-    public User(int id, String username, String password, String firstName, String lastName) {
-        this.id = id;
-        this.username = username;
-        this.password = password;
-        this.firstName = firstName;
-        this.lastName = lastName;
-    }
+    @OneToMany(mappedBy = "user",cascade = CascadeType.ALL)
+    private List<Blog> blogList;
 
     public User() {
     }
@@ -44,6 +35,14 @@ public class User{
         this.firstName = firstName;
         this.lastName = lastName;
         this.blogList = blogList;
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public String getUsername() {
@@ -78,22 +77,11 @@ public class User{
         this.lastName = lastName;
     }
 
-    @OneToMany(mappedBy = "user",cascade = CascadeType.ALL)
-    List<Blog> blogList;
-
     public List<Blog> getBlogList() {
         return blogList;
     }
 
     public void setBlogList(List<Blog> blogList) {
         this.blogList = blogList;
-    }
-
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
     }
 }

@@ -1,18 +1,14 @@
 package com.driver.models;
 
-
 import org.hibernate.annotations.CreationTimestamp;
 
 import javax.persistence.*;
-import java.time.LocalDate;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-@Table(name = "Blog")
 @Entity
+@Table(name="Blog")
 public class Blog{
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
@@ -23,16 +19,23 @@ public class Blog{
 
     @CreationTimestamp
     private Date pubDate;
+
+
+    @ManyToOne
+    @JoinColumn
+    private User user;
+
+    @OneToMany(mappedBy = "blog",cascade = CascadeType.ALL)
+    private List<Image> imageList;
+
+
+    public Blog() {
+    }
+
     public Blog(String title, String content, User user) {
         this.title = title;
         this.content = content;
         this.user = user;
-    }
-
-    public Blog(String title, String content, Date pubDate) {
-        this.title = title;
-        this.content = content;
-        this.pubDate = pubDate;
     }
 
     public Blog(Integer id, String title, String content, Date pubDate, User user, List<Image> imageList) {
@@ -44,7 +47,28 @@ public class Blog{
         this.imageList = imageList;
     }
 
-    public Blog() {
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    public List<Image> getImageList() {
+        return imageList;
+    }
+
+    public void setImageList(List<Image> imageList) {
+        this.imageList = imageList;
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public String getTitle() {
@@ -69,37 +93,5 @@ public class Blog{
 
     public void setPubDate(Date pubDate) {
         this.pubDate = pubDate;
-    }
-
-    @JoinColumn
-    @ManyToOne
-    private User user;
-
-
-    @OneToMany(mappedBy = "blog", cascade = CascadeType.ALL)
-    List<Image> imageList;
-
-    public User getUser() {
-        return user;
-    }
-
-    public void setUser(User user) {
-        this.user = user;
-    }
-
-    public List<Image> getImageList() {
-        return imageList;
-    }
-
-    public void setImageList(List<Image> imageList) {
-        this.imageList = imageList;
-    }
-
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
     }
 }
