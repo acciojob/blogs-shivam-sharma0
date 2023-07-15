@@ -44,7 +44,10 @@ public class ImageService {
         int totalSizeOfImage=x1*y1;
         int screenSize=x*y;
 
-        int totalImageCanBeFit=screenSize/totalSizeOfImage;
+
+        int firstDim=x/x1;
+        int secondDim=y/y1;
+        int totalImageCanBeFit=firstDim*secondDim;
 
        return totalImageCanBeFit;
     }
