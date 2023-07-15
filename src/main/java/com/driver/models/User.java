@@ -4,7 +4,7 @@ import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
-@Table
+@Table(name = "User")
 @Entity
 public class User{
 
@@ -79,7 +79,7 @@ public class User{
     }
 
     @OneToMany(mappedBy = "user",cascade = CascadeType.ALL)
-    List<Blog> blogList=new ArrayList<>();
+    List<Blog> blogList;
 
     public List<Blog> getBlogList() {
         return blogList;

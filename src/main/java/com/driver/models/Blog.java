@@ -1,13 +1,15 @@
 package com.driver.models;
 
 
+import org.hibernate.annotations.CreationTimestamp;
+
 import javax.persistence.*;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-@Table
+@Table(name = "Blog")
 @Entity
 public class Blog{
 
@@ -19,8 +21,12 @@ public class Blog{
 
     private String content;
 
+    @CreationTimestamp
     private Date pubDate;
-    public Blog(String title, String content, LocalDate now) {
+    public Blog(String title, String content, User user) {
+        this.title = title;
+        this.content = content;
+        this.user = user;
     }
 
     public Blog(String title, String content, Date pubDate) {
@@ -71,7 +77,7 @@ public class Blog{
 
 
     @OneToMany(mappedBy = "blog", cascade = CascadeType.ALL)
-    List<Image> imageList=new ArrayList<>();
+    List<Image> imageList;
 
     public User getUser() {
         return user;

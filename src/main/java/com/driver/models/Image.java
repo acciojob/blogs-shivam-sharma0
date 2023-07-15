@@ -2,7 +2,7 @@ package com.driver.models;
 
 import javax.persistence.*;
 
-@Table
+@Table(name = "Image")
 @Entity
 public class Image{
 
@@ -16,11 +16,12 @@ public class Image{
 
     public Image() {
     }
-
-    public Image(String description, String dimensions) {
+    public Image(String description, String dimensions, Blog blog) {
         this.description = description;
         this.dimensions = dimensions;
+        this.blog = blog;
     }
+
 
     public Image(Integer id, String description, String dimensions, Blog blog) {
         this.id = id;
