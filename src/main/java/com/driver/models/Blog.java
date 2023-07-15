@@ -38,6 +38,9 @@ public class Blog{
         this.imageList = imageList;
     }
 
+    public Blog() {
+    }
+
     public String getTitle() {
         return title;
     }
