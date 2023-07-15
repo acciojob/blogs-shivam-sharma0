@@ -80,4 +80,12 @@ public class User{
     public void setBlogList(List<Blog> blogList) {
         this.blogList = blogList;
     }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
 }

@@ -76,4 +76,12 @@ public class Blog{
     public void setImageList(List<Image> imageList) {
         this.imageList = imageList;
     }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
 }

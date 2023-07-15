@@ -49,4 +49,12 @@ public class Image{
     public void setBlog(Blog blog) {
         this.blog = blog;
     }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
 }
