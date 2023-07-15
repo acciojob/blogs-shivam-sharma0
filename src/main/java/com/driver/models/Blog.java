@@ -12,7 +12,7 @@ import java.util.List;
 public class Blog{
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
     private String title;
@@ -69,7 +69,7 @@ public class Blog{
     @ManyToOne
     private User user;
 
-    @JoinColumn
+
     @OneToMany(mappedBy = "blog", cascade = CascadeType.ALL)
     List<Image> imageList=new ArrayList<>();
 
